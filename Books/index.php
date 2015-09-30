@@ -1,2 +1,2 @@
 <?php
-include 'View/allBooks.php';
+header('Location: View/allBooks.php');

@@ -6,8 +6,8 @@ include '../Controler/newAuthor.php';?>
 <body>
 <a href="allBooks.php">Книги</a>
 
-<form method="POST">
-    <div>Автор: <input type="text" name="authorName"><p><?=$minLenght?></p>
+<form  method="POST">
+    <div>Автор: <input type="text" name="authorName"><p><?=isset($minLenght)?$minLenght:'';?></p>
         <input type="submit" value="Добави">
     </div>
 </form>

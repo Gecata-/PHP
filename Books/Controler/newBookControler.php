@@ -2,9 +2,22 @@
 /**
  * Created by PhpStorm.
  * User: gdimitrov
- * Date: 30.9.2015 ã.
- * Time: 12:54 ÷.
+ * Date: 30.9.2015 Ð³.
+ * Time: 12:54 Ñ‡.
  */
+include '../DB/mySQL.php';
 include '../Model/Author.php';
+include '../Model/BookModel.php';
 $aut = new Author();
 $authors = $aut->selectAllAuthors();
+
+if($_POST){
+    $bookAuthors = $_POST['authors'];
+    $bookName = $_POST['bookName'];
+
+    $book = new BookModel();
+
+    $book->insertBook($bookName,$bookAuthors);
+
+    header('Location: ../View/allBooks.php');
+}

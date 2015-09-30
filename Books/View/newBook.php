@@ -12,11 +12,11 @@ include '../Controler/newBookControler.php';
 
 <body>
 <a href="allBooks.php">Книги</a>
-<form action="" method="POST">
+<form action="../Controler/newBookControler.php" method="POST">
     <div>
         Име на книгата: <input type="text" name="bookName">
     </div>
-    <select name="authors" id="author" multiple="multiple">
+    <select name="authors[]" id="author" multiple="multiple">
         <?php
         foreach($authors as $author){
            echo '<option value="'.$author.'">'.$author.'</option>';

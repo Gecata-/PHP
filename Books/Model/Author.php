@@ -6,8 +6,6 @@
  * Date: 30.9.2015 ã.
  * Time: 12:17 ÷.
  */
-include '../DB/mySQL.php';
-
 class Author
 {
 
@@ -48,11 +46,11 @@ class Author
     public function selectAllAuthors()
     {
         $authors =[];
-        $stmt = mysqli_prepare($this->connection, 'SELECT author_name FROM authors');
+        $stmt = mysqli_prepare($this->connection, 'SELECT author_id, author_name FROM authors');
         mysqli_stmt_execute($stmt);
-        mysqli_stmt_bind_result($stmt, $author);
+        mysqli_stmt_bind_result($stmt, $authorID, $author);
         while(mysqli_stmt_fetch($stmt)){
-            $authors[] = $author;
+            $authors[$authorID] = $author;
         };
         return $authors;
     }

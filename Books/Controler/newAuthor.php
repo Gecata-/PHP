@@ -5,6 +5,7 @@
  * Date: 30.9.2015 г.
  * Time: 10:55 ч.
  */
+include '../DB/mySQL.php';
 include '../Model/Author.php';
 try {
     if ($_POST) {

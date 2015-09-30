@@ -1,12 +1,14 @@
 <?php
 $title = 'Книги';
-include 'head.php'; ?>
+include 'head.php';
+include '../DB/Registry.php';
+include '../Controler/allBooksMOdel.php' ?>
 <body>
 <div>
-<a href="newBook.php">Нова книга</a>
+    <a href="../View/newBook.php">Нова книга</a>
 </div>
 <div>
-<a href="newAuthor.php">Нов автор</a>
+    <a href="../View/newAuthor.php">Нов автор</a>
 </div>
 <table>
     <thead>
@@ -16,10 +18,8 @@ include 'head.php'; ?>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
+    <?php
+    ?>
     </tbody>
 </table>
 </body>
