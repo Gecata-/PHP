@@ -6,6 +6,10 @@
  * Date: 30.9.2015 ã.
  * Time: 12:17 ÷.
  */
+
+/**
+ * Class Author
+ */
 class Author
 {
 
@@ -22,6 +26,10 @@ class Author
         $this->connection = $mysql->getConnection();
     }
 
+    /**
+     * @param $name
+     * @throws Exception
+     */
     public function insertAuthor($name)
     {
         $stmt = mysqli_prepare($this->connection, 'INSERT INTO authors(author_name) VALUES (?)');
@@ -33,6 +41,10 @@ class Author
         }
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     public function checkRepeatName($name)
     {
         $stmt = mysqli_prepare($this->connection, 'SELECT author_name FROM authors WHERE author_name =?');
@@ -43,6 +55,9 @@ class Author
         return $hasAuthor;
     }
 
+    /**
+     * @return array
+     */
     public function selectAllAuthors()
     {
         $authors =[];

@@ -6,6 +6,10 @@
  * Date: 30.9.2015 ã.
  * Time: 14:32 ÷.
  */
+
+/**
+ * Class Registry
+ */
 class Registry
 {
     public $data = [];
@@ -23,6 +27,9 @@ class Registry
        return $this->data[$name];
     }
 
+    /**
+     * @return null|Registry
+     */
     public static function getRegistry()
     {
         if (self::$instance == null) {
