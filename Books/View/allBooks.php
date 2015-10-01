@@ -1,8 +1,7 @@
 <?php
 $title = 'Книги';
 include 'head.php';
-include '../DB/Registry.php';
-include '../Controler/allBooksMOdel.php' ?>
+include '../Controler/allBooksControler.php' ?>
 <body>
 <div>
     <a href="../View/newBook.php">Нова книга</a>
@@ -10,7 +9,8 @@ include '../Controler/allBooksMOdel.php' ?>
 <div>
     <a href="../View/newAuthor.php">Нов автор</a>
 </div>
-<table>
+<!-- sorry for that border :)-->
+<table border="1">
     <thead>
     <tr>
         <td>Книга</td>
@@ -19,6 +19,10 @@ include '../Controler/allBooksMOdel.php' ?>
     </thead>
     <tbody>
     <?php
+    //var_dump($booksAndAuthors);
+    foreach ($booksAndAuthors as $book => $authors) {
+        echo '<tr><td>' . $book . '</td><td>' . implode(', ', $authors) . '</td></tr>';
+    }
     ?>
     </tbody>
 </table>

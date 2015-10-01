@@ -14,7 +14,7 @@ class mySQL{
      * @param $pass
      * @param $db
      */
-    public function connect($host,$user,$pass,$db){
+    public function connect($host = 'localhost' ,$user='Gecata',$pass='1234',$db='books'){
         $this->connection = mysqli_connect($host,$user,$pass,$db);
         mysqli_set_charset($this->connection,'utf8');
     }

@@ -12,17 +12,12 @@
  */
 class Author
 {
-
-    private $host = 'localhost';
-    private $user = 'Gecata';
-    private $password = '1234';
-    private $database = 'books';
     private $connection;
 
     public function __construct()
     {
         $mysql = mySQL::getInstance();
-        $mysql->connect($this->host, $this->user, $this->password, $this->database);
+        $mysql->connect();
         $this->connection = $mysql->getConnection();
     }
 
@@ -60,11 +55,11 @@ class Author
      */
     public function selectAllAuthors()
     {
-        $authors =[];
+        $authors = [];
         $stmt = mysqli_prepare($this->connection, 'SELECT author_id, author_name FROM authors');
         mysqli_stmt_execute($stmt);
         mysqli_stmt_bind_result($stmt, $authorID, $author);
-        while(mysqli_stmt_fetch($stmt)){
+        while (mysqli_stmt_fetch($stmt)) {
             $authors[$authorID] = $author;
         };
         return $authors;

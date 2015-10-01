@@ -3,8 +3,8 @@
 /**
  * Created by PhpStorm.
  * User: gdimitrov
- * Date: 30.9.2015 ã.
- * Time: 16:16 ÷.
+ * Date: 30.9.2015 Ð³.
+ * Time: 16:16 Ñ‡.
  */
 
 /**
@@ -13,23 +13,29 @@
 class BooksAndAuthorsModel
 {
     private $connection;
+
     public function __construct()
     {
         $sql = mySQL::getInstance();
+        $sql->connect();
         $this->connection = $sql->getConnection();
+
     }
 
     /**
      * @return array
      */
-    public function GetBooksAndAuthors(){
-        $booksAndAuthors=[];
-        $stmt = mysqli_prepare($this->connection, 'SELECT author_id, book_id FROM books_authors WHERE 1');
+    public function GetBooksAndAuthors()
+    {
+        $booksAndAuthors = [];
+        $stmt = mysqli_prepare($this->connection, 'SELECT * FROM books AS b INNER JOIN books_authors AS ba
+                                ON ba.book_id = b.book_id INNER JOIN authors AS a ON ba.author_id = a.author_id');
 
-        mysqli_stmt_bind_result($stmt, $authorId, $bookId);
+        mysqli_stmt_bind_result($stmt, $bookId, $bookTitle, $ba_bid, $ba_aid, $authorId, $authorName);
         mysqli_stmt_execute($stmt);
-        while(mysqli_stmt_fetch($stmt)){
-            $booksAndAuthors[]=array($bookId=>$authorId);
+        while (mysqli_stmt_fetch($stmt)) {
+            $booksAndAuthors[$bookTitle][] = $authorName;
+            //$booksAndAuthors[$bookTitle][$authorName]= $authorId;
         }
         return $booksAndAuthors;
     }
